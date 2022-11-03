@@ -3,6 +3,9 @@ import os
 import pathlib
 
 import requests
+from dotenv import load_dotenv
+
+load_dotenv()
 
 session = os.environ.get("AOC_SESSION")
 if not session:
