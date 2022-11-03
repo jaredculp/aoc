@@ -1,6 +1,8 @@
 import argparse
+import datetime
 import os
 import pathlib
+import sys
 
 import requests
 from dotenv import load_dotenv
@@ -11,15 +13,20 @@ session = os.environ.get("AOC_SESSION")
 if not session:
     raise Exception("Must set AOC_SESSION")
 
+today = datetime.date.today()
+
 parser = argparse.ArgumentParser()
-parser.add_argument("--day", required=True)
-parser.add_argument("--year", required=True)
+parser.add_argument("--day", default=today.day)
+parser.add_argument("--year", default=today.year)
 args = parser.parse_args()
 
 url = f"https://adventofcode.com/{args.year}/day/{args.day}/input"
-input_data = requests.get(url, cookies={"session": session}).text
+r = requests.get(url, cookies={"session": session})
+if r.status_code != 200:
+    print(r.text)
+    sys.exit(1)
 
 folder = f"inputs/{args.year}"
 pathlib.Path(folder).mkdir(parents=True, exist_ok=True)
 with open(f"{folder}/{args.day}.txt", "w") as f:
-    f.write(input_data)
+    f.write(r.text)
