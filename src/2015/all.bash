@@ -1,4 +1,9 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-time ls $(dirname "$0")/*.py | xargs -n1 python
+for f in $(gls $(dirname "$0")/*.py -v)
+do
+  echo "$f"
+  time python "$f"
+  echo
+done
