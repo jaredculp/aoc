@@ -26,7 +26,7 @@ if r.status_code != 200:
     print(r.text)
     sys.exit(1)
 
-folder = f"inputs/{args.year}"
+folder = f"{args.year}/inputs"
 pathlib.Path(folder).mkdir(parents=True, exist_ok=True)
 with open(f"{folder}/{args.day}.txt", "w") as f:
     f.write(r.text)
