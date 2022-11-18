@@ -1,4 +1,4 @@
-f = open("inputs/2015/1.txt")
+f = open("inputs/2015/01.txt")
 input = f.read()
 
 count = 0

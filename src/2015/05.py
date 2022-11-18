@@ -1,4 +1,4 @@
-input = [x.strip() for x in open("inputs/2015/5.txt").readlines()]
+input = [x.strip() for x in open("inputs/2015/05.txt").readlines()]
 
 nice = 0
 for string in input:

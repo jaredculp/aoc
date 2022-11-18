@@ -1,6 +1,6 @@
 from dataclasses import dataclass
 
-input = open("inputs/2015/3.txt").read()
+input = open("inputs/2015/03.txt").read()
 
 
 @dataclass(frozen=True)
