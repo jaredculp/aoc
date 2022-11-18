@@ -2,7 +2,7 @@ import re
 from functools import reduce
 from operator import mul
 
-f = open("inputs/2015/02.txt")
+f = open("2015/inputs/02.txt")
 lines = [x.strip() for x in f.readlines()]
 
 paper = 0

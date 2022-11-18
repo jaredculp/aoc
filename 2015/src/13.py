@@ -2,7 +2,7 @@ import re
 from itertools import permutations
 from typing import Dict, Optional, Tuple
 
-inputs = [x.strip() for x in open("inputs/2015/13.txt").readlines()]
+inputs = [x.strip() for x in open("2015/inputs/13.txt").readlines()]
 me = "ME"
 
 

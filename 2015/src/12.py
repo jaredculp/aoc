@@ -1,7 +1,7 @@
 import json
 from typing import Any, Dict, List, Optional, Union
 
-input = json.loads(open("inputs/2015/12.txt").read())
+input = json.loads(open("2015/inputs/12.txt").read())
 
 
 def sum_json(

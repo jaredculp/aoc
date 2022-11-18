@@ -1,4 +1,4 @@
-input = open("inputs/2015/10.txt").read().strip()
+input = open("2015/inputs/10.txt").read().strip()
 
 
 def iter(input: str) -> str:

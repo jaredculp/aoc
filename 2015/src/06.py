@@ -1,6 +1,6 @@
 import re
 
-inputs = [x.strip() for x in open("inputs/2015/06.txt").readlines()]
+inputs = [x.strip() for x in open("2015/inputs/06.txt").readlines()]
 
 size = 1000
 lights = [[0] * size for _ in range(size)]

@@ -1,6 +1,6 @@
 from hashlib import md5
 
-input = open("inputs/2015/04.txt").read().strip()
+input = open("2015/inputs/04.txt").read().strip()
 
 
 num = 0

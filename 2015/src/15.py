@@ -4,7 +4,7 @@ from itertools import combinations_with_replacement, permutations
 from operator import mul
 from typing import Dict, Optional
 
-inputs = [x.strip() for x in open("inputs/2015/15.txt").readlines()]
+inputs = [x.strip() for x in open("2015/inputs/15.txt").readlines()]
 
 items = dict()
 for input in inputs:

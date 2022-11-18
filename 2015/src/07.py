@@ -3,7 +3,7 @@ import re
 from functools import lru_cache
 from typing import Dict, Union
 
-inputs = [x.strip() for x in open("inputs/2015/07.txt").readlines()]
+inputs = [x.strip() for x in open("2015/inputs/07.txt").readlines()]
 outputs: Dict[str, Union[str, int]] = dict()
 
 commands = {

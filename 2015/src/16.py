@@ -1,4 +1,4 @@
-inputs = [x.strip() for x in open("inputs/2015/16.txt").readlines()]
+inputs = [x.strip() for x in open("2015/inputs/16.txt").readlines()]
 
 sues = dict()
 for input in inputs:

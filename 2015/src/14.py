@@ -3,7 +3,7 @@ from collections import defaultdict
 from itertools import cycle, islice
 from typing import Dict, Iterator, List
 
-inputs = [x.strip() for x in open("inputs/2015/14.txt").readlines()]
+inputs = [x.strip() for x in open("2015/inputs/14.txt").readlines()]
 
 
 def setup_raindeer() -> Dict[str, Iterator[int]]:

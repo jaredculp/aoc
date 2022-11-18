@@ -2,7 +2,7 @@ from collections import defaultdict
 from itertools import permutations
 from typing import Dict, Tuple
 
-inputs = [x.strip() for x in open("inputs/2015/09.txt").readlines()]
+inputs = [x.strip() for x in open("2015/inputs/09.txt").readlines()]
 
 distances: Dict[Tuple[str, str], int] = defaultdict(lambda: float("inf"))
 cities = set()

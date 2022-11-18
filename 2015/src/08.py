@@ -1,6 +1,6 @@
 import ast
 
-inputs = [x.strip() for x in open("inputs/2015/08.txt").readlines()]
+inputs = [x.strip() for x in open("2015/inputs/08.txt").readlines()]
 
 length = 0
 for input in inputs:

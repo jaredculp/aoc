@@ -1,6 +1,6 @@
 from itertools import combinations
 
-inputs = [int(x.strip()) for x in open("inputs/2015/17.txt").readlines()]
+inputs = [int(x.strip()) for x in open("2015/inputs/17.txt").readlines()]
 
 combos = []
 for i in range(1, len(inputs) + 1):
