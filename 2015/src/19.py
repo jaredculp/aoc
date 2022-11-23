@@ -1,5 +1,6 @@
 import re
-from typing import List, Optional, Tuple
+from random import shuffle
+from typing import List, Tuple
 
 inputs = [x.strip() for x in open("2015/inputs/19.txt").readlines()]
 target_molecule = inputs.pop()
@@ -17,16 +18,15 @@ for src, repl in mods:
 
 print("part1: ", len(molecules))
 
-
-def steps(molecule: str, count: int) -> Optional[int]:
-    print(count)
-    if molecule == target_molecule:
-        return steps
-
+count = 0
+while molecule != "e":
     for src, repl in mods:
-        for p in [m.start() for m in re.finditer(src, molecule)]:
-            new_molecule = molecule[:p] + repl + molecule[p + len(src) :]
-            return steps(new_molecule, count + 1)
+        if repl not in molecule:
+            continue
 
+        molecule = molecule.replace(repl, src, 1)
+        count += 1
 
-print(steps("e", 0))
+    shuffle(mods)
+
+print("part2: ", count)
