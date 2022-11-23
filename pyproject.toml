@@ -9,6 +9,7 @@ readme = "README.md"
 python = "^3.7"
 requests = "^2.28.1"
 python-dotenv = "^0.21.0"
+enlighten = "^1.11.1"
 
 
 [build-system]
