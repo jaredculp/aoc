@@ -28,5 +28,5 @@ if r.status_code != 200:
 
 folder = f"{args.year}/inputs"
 pathlib.Path(folder).mkdir(parents=True, exist_ok=True)
-with open(f"{folder}/{args.day}.txt", "w") as f:
+with open(f"{folder}/{args.day:0>2}.txt", "w") as f:
     f.write(r.text)
