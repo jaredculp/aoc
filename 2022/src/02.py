@@ -15,7 +15,7 @@ part1 = {
     "B X": 1,
     "C Y": 2,
 }
-print("part1", sum(part1[x] for x in inputs))
+print(sum(part1[x] for x in inputs))
 
 part2 = {
     # wins
@@ -31,4 +31,4 @@ part2 = {
     "B X": 1,
     "C X": 2,
 }
-print("part2", sum(part2[x] for x in inputs))
+print(sum(part2[x] for x in inputs))

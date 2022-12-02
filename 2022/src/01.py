@@ -10,5 +10,5 @@ for input in inputs:
 
     elf += int(input)
 
-print("part1:", max(elves))
-print("part2:", sum(sorted(elves, reverse=True)[:3]))
+print(max(elves))
+print(sum(sorted(elves, reverse=True)[:3]))
