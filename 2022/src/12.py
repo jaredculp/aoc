@@ -29,31 +29,23 @@ for point in points:
             graph[point].append(point + neighbor)
 
 
-def bfs(graph, start, end):
-    visited = []
-    queue = [[start]]
+def dijkstra(graph, source):
+    Q = list(graph.keys())
+    dist = {v: float("inf") for v in graph}
+    dist[source] = 0
 
-    while queue:
-        path = queue.pop(0)
-        node = path[-1]
+    while Q:
+        u = min(Q, key=dist.get)
+        Q.remove(u)
 
-        if node not in visited:
-            for neighbor in graph[node]:
-                new_path = list(path)
+        for v in graph[u]:
+            alt = dist[u] + 1
+            if alt < dist[v] and points[u] - points[v] <= 1:
+                dist[v] = alt
 
-                if points[neighbor] - points[node] > 1:
-                    continue
-
-                new_path.append(neighbor)
-                queue.append(new_path)
-
-                if neighbor == end:
-                    return len(new_path[1:])
-
-            visited.append(node)
-
-    return float("inf")
+    return dist
 
 
-print(bfs(graph, start, end))
-print(min(bfs(graph, s, end) for s in starts))
+paths = dijkstra(graph, end)
+print(paths[start])
+print(min(paths[s] for s in starts))
