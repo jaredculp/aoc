@@ -1,5 +1,7 @@
 from dataclasses import dataclass
 
+from common import sign
+
 
 @dataclass(frozen=True)
 class Point:
@@ -30,15 +32,6 @@ class Point:
             Point(self.x, self.y + 1),
             Point(self.x + 1, self.y + 1),
         ]
-
-
-def sign(x):
-    if x < 0:
-        return -1
-    elif x == 0:
-        return 0
-    else:
-        return 1
 
 
 inputs = [x.strip().split(" ") for x in open("2022/inputs/09.txt").readlines()]
