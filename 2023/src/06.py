@@ -3,6 +3,8 @@ import math
 
 input = [l for l in open("2023/inputs/06.txt").readlines()]
 
+# -x^2 + time * x - distance = 0
+# quadratic formula: a=-1, b=7, c=-9
 times, distances = [[int(x) for x in re.findall(r"\d+", i)] for i in input]
 total = 1
 for time, distance in zip(times, distances):
