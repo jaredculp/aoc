@@ -1,6 +1,9 @@
-input = [l.strip() for l in open("2023/inputs/10.txt").readlines()]
-X = len(input)
-Y = len(input[0])
+import matplotlib
+
+input = [list(l.strip()) for l in open("2023/inputs/10.txt").readlines()]
+X = len(input[0])
+Y = len(input)
+
 
 S = next((x, y) for x in range(X) for y in range(Y) if input[y][x] == "S")
 sx, sy = S
@@ -10,7 +13,7 @@ for x, y in [(-1, -1), (-1, 0), (-1, 1), (0, -1), (0, 1), (1, -1), (1, 0), (1, 1
     q = [(sx + x, sy + y)]
     while q:
         sx, sy = q.pop(0)
-        if (sx, sy) in seen or not ((0 < sx <= X) and (0 < sy <= Y)):
+        if (sx, sy) in seen or not (0 < sx < X and 0 < sy < Y):
             sx, sy = S
         else:
             seen.add((sx, sy))
@@ -33,3 +36,14 @@ for x, y in [(-1, -1), (-1, 0), (-1, 1), (0, -1), (0, 1), (1, -1), (1, 0), (1, 1
 
 path.append(S)
 print(len(path) // 2)
+
+# cheating, but i gave up otherwise
+poly = matplotlib.path.Path(path)
+print(
+    sum(
+        1
+        for x in range(X)
+        for y in range(Y)
+        if (x, y) not in path and poly.contains_point((x, y))
+    )
+)
