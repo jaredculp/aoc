@@ -2,7 +2,6 @@ import sys
 
 sys.setrecursionlimit(10_000)
 
-input = [x.strip() for x in open("2023/inputs/16.ex").readlines()]
 input = [x.strip() for x in open("2023/inputs/16.txt").readlines()]
 X = len(input[0])
 Y = len(input)
@@ -55,4 +54,11 @@ def travel(x, y, dx, dy, seen):
     return travel(x + dx, y + dy, dx, dy, seen)
 
 
+starts = [
+    *[(x, 0, 0, 1) for x in range(X)],
+    *[(x, Y, 0, -1) for x in range(X)],
+    *[(0, y, 1, 0) for y in range(Y)],
+    *[(X, y, -1, 0) for y in range(Y)],
+]
 print(len(travel(0, 0, 1, 0, set())))
+print(max(len(travel(*s, set())) for s in starts))
