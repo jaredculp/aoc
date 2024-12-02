@@ -2,8 +2,8 @@ import argparse
 import datetime
 import os
 import pathlib
-import sys
 import subprocess
+import sys
 
 import requests
 from dotenv import load_dotenv
@@ -30,11 +30,14 @@ if r.status_code != 200:
 
 folder = f"{args.year}/inputs"
 pathlib.Path(folder).mkdir(parents=True, exist_ok=True)
-with open(f"{folder}/{args.day:0>2}.txt", "w") as f:
+input = f"{folder}/{args.day:0>2}.txt"
+with open(input, "w") as f:
     f.write(r.text)
 
 folder = f"{args.year}/src"
 src = f"{folder}/{args.day:0>2}.py"
+with open(src, "w") as f:
+    f.write(f'input = open("{input}").readlines()\nprint(input)\n')
 if not pathlib.Path(src).is_file():
     pathlib.Path(folder).mkdir(parents=True, exist_ok=True)
     with open(src, "a"):
