@@ -25,8 +25,7 @@ def setup_raindeer() -> Dict[str, Iterator[int]]:
 def reindeer_distances(seconds: int) -> List[int]:
     all_reindeer = setup_raindeer()
     return [
-        sum(islice(distances, seconds))
-        for reindeer, distances in all_reindeer.items()
+        sum(islice(distances, seconds)) for reindeer, distances in all_reindeer.items()
     ]
 
 
@@ -39,14 +38,12 @@ def reindeer_points(seconds: int) -> List[int]:
         for reindeer, distances in all_reindeer.items():
             positions[reindeer] += next(distances)
 
-        winners = {
-            k for k, v in positions.items() if v == max(positions.values())
-        }
+        winners = {k for k, v in positions.items() if v == max(positions.values())}
         for winner in winners:
             points[winner] += 1
 
     return points.values()
 
 
-print("part1: ", max(reindeer_distances(2503)))
-print("part2: ", max(reindeer_points(2503)))
+print(max(reindeer_distances(2503)))
+print(max(reindeer_points(2503)))

@@ -28,5 +28,5 @@ for trip in possible_trips:
     shortest = min(shortest, distance)
     longest = max(longest, distance)
 
-print("part1: ", shortest)
-print("part2: ", longest)
+print(shortest)
+print(longest)

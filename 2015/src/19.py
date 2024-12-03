@@ -16,7 +16,7 @@ for src, repl in mods:
     for p in [m.start() for m in re.finditer(src, molecule)]:
         molecules.add(molecule[:p] + repl + molecule[p + len(src) :])
 
-print("part1: ", len(molecules))
+print(len(molecules))
 
 count = 0
 while molecule != "e":
@@ -29,4 +29,4 @@ while molecule != "e":
 
     shuffle(mods)
 
-print("part2: ", count)
+print(count)

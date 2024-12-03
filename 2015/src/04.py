@@ -15,5 +15,5 @@ while not part1 or not part2:
         part2 = num
     num += 1
 
-print("part1: ", part1)
-print("part2: ", part2)
+print(part1)
+print(part2)

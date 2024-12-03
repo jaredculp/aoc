@@ -4,6 +4,7 @@ import os
 import pathlib
 import subprocess
 import sys
+import time
 
 import requests
 from dotenv import load_dotenv
@@ -19,29 +20,41 @@ today = datetime.date.today()
 parser = argparse.ArgumentParser()
 parser.add_argument("--day", default=today.day)
 parser.add_argument("--year", default=today.year)
-parser.add_argument("--dev", action="store_true", default=True)
+parser.add_argument("--dev", action="store_true", default=False)
+parser.add_argument("--run", action="store_true", default=False)
+parser.add_argument("--all", action="store_true", default=False)
 args = parser.parse_args()
 
-url = f"https://adventofcode.com/{args.year}/day/{args.day}/input"
-r = requests.get(url, cookies={"session": session})
-if r.status_code != 200:
-    print(r.text)
-    sys.exit(1)
-
-folder = f"{args.year}/inputs"
-pathlib.Path(folder).mkdir(parents=True, exist_ok=True)
-input = f"{folder}/{args.day:0>2}.txt"
-with open(input, "w") as f:
-    f.write(r.text)
-
-folder = f"{args.year}/src"
-src = f"{folder}/{args.day:0>2}.py"
-with open(src, "w") as f:
-    f.write(f'input = open("{input}").readlines()\nprint(input)\n')
-if not pathlib.Path(src).is_file():
-    pathlib.Path(folder).mkdir(parents=True, exist_ok=True)
-    with open(src, "a"):
-        pass
+src_path = pathlib.Path(f"{args.year}/src/{args.day:02}.py")
 
 if args.dev:
-    subprocess.run(f"ls {src} | entr -c python {src}", shell=True, text=True)
+    # Fetch input
+    url = f"https://adventofcode.com/{args.year}/day/{args.day}/input"
+    r = requests.get(url, cookies={"session": session})
+    if r.status_code != 200:
+        print(r.text)
+        sys.exit(1)
+
+    # Create directories and save input
+    input_path = pathlib.Path(f"{args.year}/inputs/{args.day:02}.txt")
+    input_path.parent.mkdir(parents=True, exist_ok=True)
+    input_path.write_text(r.text)
+
+    # Create source file
+    src_path.parent.mkdir(parents=True, exist_ok=True)
+    if not src_path.exists():
+        src_path.write_text(f'input = open("{input_path}").readlines()\nprint(input)\n')
+
+    subprocess.run(f"ls {src_path} | entr -c python {src_path}", shell=True, text=True)
+elif args.run:
+    start = time.time()
+    for path in sorted(list(src_path.parent.glob("*.py")) if args.all else [src_path]):
+        script_start = time.time()
+        # Assumes each file outputs a single line for p1 and p2
+        [p1, p2] = subprocess.run(
+            f"python {path}", shell=True, text=True, capture_output=True
+        ).stdout.splitlines()
+        print(
+            f"{path}\t({time.time() - script_start:.2f}s)\nPart 1: {p1}\nPart 2: {p2}\n"
+        )
+    print(f"🎄 {time.time() - start:.2f}s")

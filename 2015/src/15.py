@@ -1,6 +1,6 @@
 from collections import Counter
 from functools import reduce
-from itertools import combinations_with_replacement, permutations
+from itertools import combinations_with_replacement
 from operator import mul
 from typing import Dict, Optional
 
@@ -16,9 +16,7 @@ for input in inputs:
 ingredients = items.keys()
 
 
-def score(
-    amounts: Dict[str, int], target_calories: Optional[int] = None
-) -> int:
+def score(amounts: Dict[str, int], target_calories: Optional[int] = None) -> int:
     calories = 0
     for item, amount in amounts.items():
         calories += amount * int(items[item]["calories"])
@@ -42,5 +40,5 @@ for c in combinations_with_replacement(ingredients, 100):
     part_1 = max(score(item_amounts), part_1)
     part_2 = max(score(item_amounts, 500), part_2)
 
-print("part1: ", part_1)
-print("part2: ", part_2)
+print(part_1)
+print(part_2)

@@ -7,7 +7,7 @@ for input in inputs:
     length += len(input)
     length -= len(ast.literal_eval(input))
 
-print("part1: ", length)
+print(length)
 
 length = 0
 for input in inputs:
@@ -15,4 +15,4 @@ for input in inputs:
     length += input.count('"')
     length += input.count("\\")
 
-print("part2: ", length)
+print(length)

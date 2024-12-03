@@ -47,5 +47,5 @@ for i, dir in enumerate(input):
     robo_houses.add(House(x2, y2))
 
 
-print("part1: ", len(houses))
-print("part2: ", len(robo_houses))
+print(len(houses))
+print(len(robo_houses))

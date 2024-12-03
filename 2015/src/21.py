@@ -90,5 +90,5 @@ for weapon in weapons:
             else:
                 max_cost = max(max_cost, cost)
 
-print("part1: ", min_cost)
-print("part2: ", max_cost)
+print(min_cost)
+print(max_cost)

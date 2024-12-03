@@ -12,22 +12,22 @@ for input in inputs:
     sues[num] = {k: int(v) for k, v in props.items()}
 
 search = {
-    'children': 3,
-    'cats': 7,
-    'samoyeds': 2,
-    'pomeranians': 3,
-    'akitas': 0,
-    'vizslas': 0,
-    'goldfish': 5,
-    'trees': 3,
-    'cars': 2,
-    'perfumes': 1,
+    "children": 3,
+    "cats": 7,
+    "samoyeds": 2,
+    "pomeranians": 3,
+    "akitas": 0,
+    "vizslas": 0,
+    "goldfish": 5,
+    "trees": 3,
+    "cars": 2,
+    "perfumes": 1,
 }
 
 for sue, props in sues.items():
     if all(k not in props or v == props[k] for k, v in search.items()):
         sues.pop(sue)
-        print("part1: ", sue)
+        print(sue)
         break
 
 for sue, props in sues.items():
@@ -38,4 +38,4 @@ for sue, props in sues.items():
         or (v == props[k])
         for k, v in search.items()
     ):
-        print("part2: ", sue)
+        print(sue)

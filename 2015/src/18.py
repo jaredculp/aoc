@@ -62,5 +62,5 @@ def run(sticky: Optional[bool] = False):
     return sum(map(sum, lights))
 
 
-print("part1: ", run())
-print("part2: ", run(True))
+print(run())
+print(run(True))

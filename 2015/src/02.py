@@ -16,5 +16,5 @@ for line in lines:
     paper += 2 * l * w + 2 * w * h + 2 * h * l + smallest_side
     ribbon += 2 * small_l + 2 * small_w + l * w * h
 
-print("part1: ", paper)
-print("part2: ", ribbon)
+print(paper)
+print(ribbon)

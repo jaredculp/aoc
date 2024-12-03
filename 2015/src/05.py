@@ -17,7 +17,7 @@ for string in input:
     if all([vowels, repeated, substrings]):
         nice += 1
 
-print("part1: ", nice)
+print(nice)
 
 nice = 0
 for string in input:
@@ -50,4 +50,4 @@ for string in input:
     if pair_match and sandwich_match:
         nice += 1
 
-print("part2: ", nice)
+print(nice)

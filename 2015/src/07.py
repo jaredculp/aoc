@@ -39,8 +39,8 @@ for line in inputs:
     outputs[rhs] = lhs
 
 
-print("part1: ", get_wire("a"))
+print(get_wire("a"))
 
 outputs["b"] = get_wire("a")
 get_wire.cache_clear()
-print("part2: ", get_wire("a"))
+print(get_wire("a"))

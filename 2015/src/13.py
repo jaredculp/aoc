@@ -48,5 +48,5 @@ def seating(include_self: Optional[bool] = False) -> int:
     return best
 
 
-print("part1: ", seating())
-print("part2: ", seating(True))
+print(seating())
+print(seating(True))

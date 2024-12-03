@@ -26,7 +26,7 @@ while sum(x for x in factors(house)) * 10 < input:
     house += 1
     pbar.update()
 
-print("part1: ", house)
+print(house)
 
 house = 1
 pbar = enlighten.Counter(total=input)
@@ -34,4 +34,4 @@ while sum(x for x in factors(house) if house / x <= 50) * 11 < input:
     house += 1
     pbar.update()
 
-print("part2: ", house)
+print(house)

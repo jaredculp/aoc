@@ -20,9 +20,9 @@ def iter(input: str) -> str:
 for _ in range(40):
     input = iter(input)
 
-print("part1: ", len(input))
+print(len(input))
 
 for _ in range(10):
     input = iter(input)
 
-print("part2: ", len(input))
+print(len(input))

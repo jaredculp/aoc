@@ -8,7 +8,7 @@ for i in range(1, len(inputs) + 1):
         if sum(p) == 150:
             combos.append(p)
 
-print("part1: ", len(combos))
+print(len(combos))
 
 min_containers = len(min(combos, key=lambda x: len(x)))
-print("part2: ", len([x for x in combos if len(x) == min_containers]))
+print(len([x for x in combos if len(x) == min_containers]))

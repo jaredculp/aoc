@@ -50,7 +50,7 @@ def next_pw(pw: str) -> str:
 
 
 part1 = next_pw("vzbxkghb")
-print("part1: ", part1)
+print(part1)
 
 part2 = next_pw(part1)
-print("part2: ", part2)
+print(part2)

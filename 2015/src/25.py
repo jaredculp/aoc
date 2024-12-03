@@ -1,9 +1,7 @@
 import re
 
 input = open("2015/inputs/25.txt").readline()
-row, col = [
-    int(x) for x in re.search(r".*row (\d+), column (\d+).", input).groups()
-]
+row, col = [int(x) for x in re.search(r".*row (\d+), column (\d+).", input).groups()]
 
 
 i = 20151125
@@ -20,5 +18,5 @@ while True:
     i = (i * 252533) % 33554393
 
     if y == row and x == col:
-        print("part1: ", i)
+        print(i)
         break

@@ -18,7 +18,7 @@ for input in inputs:
             elif command == "turn off":
                 lights[y][x] &= 0
 
-print("part1: ", sum(sum(x) for x in lights))
+print(sum(sum(x) for x in lights))
 
 lights = [[0] * size for _ in range(size)]
 for input in inputs:
@@ -35,4 +35,4 @@ for input in inputs:
                 if lights[y][x] > 0:
                     lights[y][x] -= 1
 
-print("part2: ", sum(sum(x) for x in lights))
+print(sum(sum(x) for x in lights))

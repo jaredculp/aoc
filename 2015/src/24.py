@@ -17,5 +17,5 @@ def quantum_entanglement(compartments: Optional[int] = 3):
             return min([reduce(mul, c) for c in cs])
 
 
-print("part1: ", quantum_entanglement())
-print("part1: ", quantum_entanglement(4))
+print(quantum_entanglement())
+print(quantum_entanglement(4))

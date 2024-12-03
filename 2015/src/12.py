@@ -24,5 +24,5 @@ def sum_json(
     return total
 
 
-print("part1: ", sum_json(input))
-print("part2: ", sum_json(input, True))
+print(sum_json(input))
+print(sum_json(input, True))

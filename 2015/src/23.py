@@ -33,5 +33,5 @@ def run_program(registers: Dict[str, int]) -> Dict[str, int]:
     return registers
 
 
-print("part1: ", run_program({"a": 0, "b": 0})["b"])
-print("part2: ", run_program({"a": 1, "b": 0})["b"])
+print(run_program({"a": 0, "b": 0})["b"])
+print(run_program({"a": 1, "b": 0})["b"])

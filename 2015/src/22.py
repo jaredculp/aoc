@@ -135,9 +135,7 @@ class Game:
 
 
 def simulate(hard_mode: Optional[bool] = False) -> int:
-    input = [
-        int(x.split(": ")[1]) for x in open("2015/inputs/22.txt").readlines()
-    ]
+    input = [int(x.split(": ")[1]) for x in open("2015/inputs/22.txt").readlines()]
 
     # use some type of path algorithm here instead of brute force?
     iters = 5_000_000
@@ -171,7 +169,7 @@ def simulate(hard_mode: Optional[bool] = False) -> int:
 
 manager = enlighten.get_manager()
 
-print("part1: ", simulate())
-print("part2: ", simulate(True))
+print(simulate())
+print(simulate(True))
 
 manager.stop()

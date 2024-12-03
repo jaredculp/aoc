@@ -11,5 +11,5 @@ for i, x in enumerate(input):
     elif x == ")":
         count -= 1
 
-print("part1: ", count)
-print("part2: ", basement)
+print(count)
+print(basement)
