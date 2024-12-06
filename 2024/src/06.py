@@ -10,7 +10,7 @@ def patrol(pos, obstacle=None):
     dir = 0 - 1j
     while True:
         if (pos, dir) in seen:
-            return -1
+            return {}
         else:
             seen.add((pos, dir))
 
@@ -24,19 +24,14 @@ def patrol(pos, obstacle=None):
             dir *= 1j
         else:
             pos = next_pos
-    return len({p for p, _ in seen})
+    return {p for p, _ in seen}
 
 
 if __name__ == "__main__":
     pos = next(complex(c, r) for r in range(R) for c in range(C) if input[r][c] == "^")
-    print(patrol(pos))
+    path = patrol(pos)
+    print(len(path))
 
-    cycles = 0
     with ProcessPoolExecutor() as executor:
-        futures = [
-            executor.submit(patrol, pos, complex(c, r))
-            for r in range(R)
-            for c in range(C)
-            if input[r][c] == "."
-        ]
-        print(sum(1 for f in as_completed(futures) if f.result() == -1))
+        futures = [executor.submit(patrol, pos, p) for p in path]
+        print(sum(f.result() == {} for f in as_completed(futures)))
