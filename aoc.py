@@ -18,8 +18,8 @@ if not session:
 today = datetime.date.today()
 
 parser = argparse.ArgumentParser()
-parser.add_argument("--day", default=today.day)
-parser.add_argument("--year", default=today.year)
+parser.add_argument("--day", type=int, default=today.day)
+parser.add_argument("--year", type=int, default=today.year)
 parser.add_argument("--dev", action="store_true", default=False)
 parser.add_argument("--run", action="store_true", default=False)
 parser.add_argument("--all", action="store_true", default=False)
