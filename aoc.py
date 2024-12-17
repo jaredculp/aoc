@@ -56,29 +56,29 @@ src_path = pathlib.Path(f"{args.year}/src/{args.day:02}.py")
 if args.dev:
     # Fetch input
     url = f"https://adventofcode.com/{args.year}/day/{args.day}"
-    r = requests.get(f"{url}/input", cookies={"session": session})
-    if r.status_code != 200:
-        print(r.text)
+    real_input = requests.get(f"{url}/input", cookies={"session": session})
+    if real_input.status_code != 200:
+        print(real_input.text)
         sys.exit(1)
 
-    r = requests.get(url)
-    if r.status_code != 200:
-        print(r.text)
+    sample_input = requests.get(url)
+    if sample_input.status_code != 200:
+        print(sample_input.text)
         sys.exit(1)
 
-    code_parser.feed(r.text)
+    code_parser.feed(sample_input.text)
     sample = code_parser.code.strip()
 
     # Create directories and save input
     input_path = pathlib.Path(f"{args.year}/inputs/{args.day:02}.txt")
     input_path.parent.mkdir(parents=True, exist_ok=True)
-    input_path.write_text(r.text)
+    input_path.write_text(real_input.text)
 
     # Create source file
     src_path.parent.mkdir(parents=True, exist_ok=True)
     if not src_path.exists():
         src_path.write_text(
-            f'input = open("{input_path}").readlines()\ninput = """{sample}""".splitlines()\nprint(input)\n'
+            f'input = """{sample}""".splitlines()\n# input = open("{input_path}").readlines()\nprint(input)\n'
         )
 
     subprocess.run(f"ls {src_path} | entr -c python {src_path}", shell=True, text=True)
