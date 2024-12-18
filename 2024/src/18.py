@@ -47,8 +47,7 @@ def path(grid):
 
 
 print(path(make_grid(1024)))
-
-for i, coord in enumerate(input, 1):
-    if not path(make_grid(i)):
+for i, coord in reversed(list(enumerate(input))):
+    if path(make_grid(i)):
         print(",".join(str(c) for c in coord))
         break
