@@ -18,6 +18,10 @@ if not session:
 
 
 class CodeParser(HTMLParser):
+    """
+    HTMLParser which grabs all <pre> tags.
+    """
+
     def __init__(self):
         super().__init__()
         self._found = False
@@ -40,18 +44,21 @@ class CodeParser(HTMLParser):
         return self._code[0]
 
 
-today = datetime.date.today()
-
+# Command line args
 parser = argparse.ArgumentParser()
-parser.add_argument("--day", type=int, default=today.day)
-parser.add_argument("--year", type=int, default=today.year)
-parser.add_argument("--dev", action="store_true", default=False)
-parser.add_argument("--run", action="store_true", default=False)
-parser.add_argument("--all", action="store_true", default=False)
+parser.add_argument("-d", "--day", type=int, default=datetime.date.today().day)
+parser.add_argument("-y", "--year", type=int, default=datetime.date.today().year)
+parser.add_argument("-v", "--dev", action="store_true", default=False)
+parser.add_argument("-r", "--run", action="store_true", default=False)
+parser.add_argument("-a", "--all", action="store_true", default=False)
 args = parser.parse_args()
 code_parser = CodeParser()
 
 src_path = pathlib.Path(f"{args.year}/src/{args.day:02}.py")
+
+if args.dev and args.run:
+    print("Cannot run in --run and --dev mode simultaneously!")
+    sys.exit(1)
 
 if args.dev:
     # Fetch input
@@ -66,6 +73,7 @@ if args.dev:
         print(sample_input.text)
         sys.exit(1)
 
+    # Parse input
     code_parser.feed(sample_input.text)
     sample = code_parser.code.strip()
 
@@ -81,8 +89,10 @@ if args.dev:
             f'input = """{sample}""".splitlines()\n# input = open("{input_path}").readlines()\nprint(input)\n'
         )
 
+    # Run a file watcher (entr) to rerun the program any time it changes
     subprocess.run(f"ls {src_path} | entr -c python {src_path}", shell=True, text=True)
-elif args.run:
+
+if args.run:
     start = time.time()
     for path in sorted(list(src_path.parent.glob("*.py")) if args.all else [src_path]):
         script_start = time.time()
