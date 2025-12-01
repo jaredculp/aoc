@@ -1,19 +1,18 @@
-[tool.poetry]
+[project]
 name = "aoc"
 version = "0.1.0"
 description = ""
-authors = ["jaredculp <jared@culp.dev>"]
+authors = [{ name = "jaredculp", email = "jared@culp.dev" }]
+requires-python = ">=3.9,<4"
 readme = "README.md"
-
-[tool.poetry.dependencies]
-python = "^3.9"
-requests = "^2.28.1"
-python-dotenv = "^0.21.0"
-enlighten = "^1.11.1"
-tqdm = "^4.64.1"
-matplotlib = "^3.8.2"
-
+dependencies = [
+    "requests",
+    "python-dotenv",
+    "enlighten",
+    "tqdm",
+    "matplotlib",
+]
 
 [build-system]
-requires = ["poetry-core"]
-build-backend = "poetry.core.masonry.api"
+requires = ["hatchling"]
+build-backend = "hatchling.build"
